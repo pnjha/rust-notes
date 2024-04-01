@@ -12,7 +12,36 @@ fn main() {
   // conditional()
   // loop_fn();
   // while_fn();
-  for_loop_fn();
+  // for_loop_fn();
+  // shadowing()
+  // string_var()
+  ownership()
+}
+
+fn ownership(){
+  let outer : String;
+  {
+    let inner= String::from("mars");
+    outer = inner;
+    println!("{}", outer);
+    // println!("{}", inner); // fails since the inner looses the ownership, there can only be one owner of a memory
+    // this is only valid for var allocated in heap
+  }
+}
+
+fn string_var(){
+  let mut s = String::from("Earth");
+  println!("{}",s);
+  println!("{}",s.len());
+  s.push_str(" Moon");
+  println!("{}",s);
+}
+
+fn shadowing(){
+  let a = 1;
+  println!("{}", a);
+  let a = "2";
+  println!("{}", a);
 }
 
 fn for_loop_fn(){
